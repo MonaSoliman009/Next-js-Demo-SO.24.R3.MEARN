@@ -1,0 +1,10 @@
+.link_container{
+   color: white;
+   margin-right: 2%;
+}
+
+.container{
+    background-color:#09c;
+    padding: 1%;
+    display: flex;
+}
