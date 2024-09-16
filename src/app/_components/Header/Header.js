@@ -8,6 +8,7 @@ const pages = [
     { name: "Contact", link: "/contact-us" },
     { name: "Login", link: "/login" },
     { name: "Products", link: "/products" },
+    { name: "Todos", link: "/todos" },
 
 ]
 const Header = () => {

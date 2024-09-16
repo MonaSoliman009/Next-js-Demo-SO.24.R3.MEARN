@@ -1,29 +1,25 @@
-import Link from 'next/link';
+import { Suspense } from 'react';
+import ProductList from '../_components/productList';
 import styles from './products.module.css'
+
+
+export const metadata = {
+    title: "Products"
+}
 const Page = async () => {
-
-    const res = await fetch('https://fakestoreapi.com/products')
-    const products = await res.json()
-
-    console.log(products);
-
-
     return (
         <>
-        <div className={styles.parent}>
-        {products.map((prd) =><Link className={styles.card} href={`/products/${prd.id}`}  key={prd.id}  >
-        
-            <div >
-                <img src={prd.image} alt="Avatar" style={{ width: "100%" }} />
-                <div className={styles.container}>
-                    <h4>{prd.title}</h4>
-                    <p>{prd.description}</p>
-                </div>
-            </div>
-        </Link>)}
+            <h1>Products Page</h1>
+            <p>This is a product page to display products from Api</p>
+            <div className={styles.parent}>
+                <Suspense fallback={<>Loading Products.....</>}>
 
-        </div>
-       
+                <ProductList/>
+                </Suspense>
+         
+
+            </div>
+
 
 
         </>
@@ -31,4 +27,5 @@ const Page = async () => {
     );
 }
 
+export const revalidate=60  //isr
 export default Page;
