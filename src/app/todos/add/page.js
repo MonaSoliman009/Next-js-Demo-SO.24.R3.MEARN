@@ -1,47 +1,23 @@
-"use client"
-import React, { useState } from 'react';
+
+import React from 'react';
 import './add.css'
-import { useRouter } from 'next/navigation'
+import { todoModel } from '@/app/_lib/models/todo';
+import { redirect } from 'next/navigation';
+import { revalidatePath } from 'next/cache';
+import { saveTodo } from '@/app/_lib/actions';
+
 const Page = () => {
-    const [todo, setTodo] = useState({
-        title: "",
-        status: ""
-    })
-    const router = useRouter()
 
-
-    const handleChange = (evt) => {
-
-        setTodo({ ...todo, [evt.target.name]: evt.target.value })
-
-
-    }
-
-    const handleSubmit = async (e) => {
-        e.preventDefault()
-
-        const res = await fetch("http://localhost:3000/api/todos", {
-            method: "POST",
-            body: JSON.stringify(todo)
-        })
-
-        if (res.status == 201) {
-            router.push('/todos')
-        } else {
-            console.log("failed");
-
-        }
-
-    }
+   
 
     return (
-        <div class="form_container">
-            <form onSubmit={handleSubmit}>
+        <div className="form_container">
+            <form action={saveTodo}>
                 <label for="fname">Title</label>
-                <input onChange={(e) => { handleChange(e) }} type="text" id="fname" name="title" placeholder="Your name.." />
+                <input type="text" id="fname" name="title" placeholder="Your title.." />
 
                 <label for="lname">Status</label>
-                <input onChange={(e) => { handleChange(e) }} type="text" id="lname" name="status" placeholder="Your last name.." />
+                <input type="text" id="lname" name="status" placeholder="Your status.." />
 
 
 

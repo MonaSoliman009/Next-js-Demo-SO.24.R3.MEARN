@@ -14,7 +14,7 @@ const ProductList = async() => {
             {products.map((prd) => <Link className={styles.card} href={`/products/${prd.id}`} key={prd.id}  >
 
                 <div >
-                    <Image width={100} height={300} layout='responsive' src={prd.image} alt="Avatar" style={{ width: "100%" }} />
+                    <Image  width={100} height={300} layout='responsive' src={prd.image} alt="Avatar" style={{ width: "100%" }} />
                     <div className={styles.container}>
                         <h4>{prd.title}</h4>
                         <p>{prd.description}</p>

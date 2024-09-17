@@ -3,6 +3,9 @@ const nextConfig = {
     images:{
         domains:["fakestoreapi.com"]
     },
+    experimental: {
+        instrumentationHook: true,
+    },
     // output:"export"
 };
 

@@ -1,10 +1,15 @@
+import { auth } from "./_lib/auth";
 
 
-export default function Home() {
+export default async function Home() {
+
+ const obj=await auth()
+ console.log(obj);
+ 
   return (
-  <>
+    <>
 
-  <h1>Home</h1>
-  </>
+    {(obj)?<h1>Welcome {obj.user.name}</h1>:<h1>Please login first</h1>}  
+    </>
   );
 }

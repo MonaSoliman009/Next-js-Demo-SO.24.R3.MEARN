@@ -1,9 +1,10 @@
 import { dbConnection } from "@/app/_lib/dbConnection";
 import { todoModel } from "@/app/_lib/models/todo";
+import schema from "./schema";
 
 
 
-dbConnection()
+// dbConnection()
 
 export async function GET() {
     try {
@@ -23,6 +24,16 @@ export async function POST(request) {
     
 
     const todo = await request.json()
+
+    const validation = schema.safeParse(todo)
+    console.log(validation);
+
+    if(!validation.success){
+
+        return new Response(JSON.stringify({ message:validation.error.errors}),{status:400})
+    }
+    //joi
+    
     try {
         const newTodo = await todoModel.create(todo)
 
