@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 
 export function dbConnection(){
+    console.log(process.env.SECRET);
     
     mongoose.connect(`mongodb+srv://monsoliman:${process.env.SECRET}@cluster0.ag3im.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`).then(()=>{
 
