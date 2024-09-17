@@ -4,7 +4,7 @@ import schema from "./schema";
 
 
 
-// dbConnection()
+dbConnection()
 
 export async function GET() {
     try {
